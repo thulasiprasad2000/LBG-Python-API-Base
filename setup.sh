@@ -1,8 +1,9 @@
 #!/bin/bash
 
 set -e
-
+echo "ttp started"
 DOCKER_IMAGE = "lbg"
+echo $DOCKER_IMAGE
 
 cleanup() {
     echo "Cleaning up previous build artefacts"
