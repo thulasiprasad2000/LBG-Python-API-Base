@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh '''
                 echo "no deploy step"
+                echo "dummy step"
                 '''
             }
         }
