@@ -20,7 +20,7 @@ build_docker() {
     docker build -t $DOCKER_IMAGE .
     }
 
-modify_app() {
+modify_docker() {
     echo "Modifying the app"
     sleep 3
     export PORT=5001
