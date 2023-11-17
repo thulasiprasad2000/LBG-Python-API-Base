@@ -4,14 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                
+                sh setup.sh
                 '''
            }
         }
         stage('Deploy') {
             steps {
                 sh '''
-                
+                echo "no deploy step"
                 '''
             }
         }
