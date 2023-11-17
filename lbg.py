@@ -208,5 +208,5 @@ if __name__ == '__main__':
         # get app to serve
         PORT = (os.getenv('PORT',80))
         HOST = '0.0.0.0'
-    print(f'API Listening on http://{HOST}:{PORT}')
-    app.run(host=HOST, port=PORT, debug=True)
+        print(f'API Listening on http://{HOST}:{PORT}')
+        app.run(host=HOST, port=PORT, debug=True)
