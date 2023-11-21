@@ -4,8 +4,10 @@ WORKDIR /app
 
 COPY . .
 
+ARG PORT=8080
+
 RUN pip install -r "requirements.txt"
 
-EXPOSE 8080
+EXPOSE ${PORT}
 
 ENTRYPOINT ["python", "lbg.py"]

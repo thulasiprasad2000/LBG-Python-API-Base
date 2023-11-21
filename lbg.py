@@ -5,25 +5,25 @@ LBG learning-oriented CRUD-based RESTful API using standard Flask routing
 # import Flask microframework and associated tools
 from flask import Flask, request, jsonify
 from flask_api import status
+from os import getenv
 
 # import SQL Alchemy (including ORM - Object-relational Mapper - and its data mapper pattern)
 from models import db, ItemModel
 from sqlalchemy import exc
-import os
+import pymysql
 
 # JavaScript/ES6 text/plain MIME Content type fix (avoids registry hack!)
 import mimetypes
 mimetypes.add_type('text/javascript', '.js')
 
 # set up the app with listening socket for http requests and appropriate hostname
-#PORT = 8080
-#HOST = '0.0.0.0'
+HOST = '0.0.0.0'
 
 # get app to serve static files from the public directory
 app = Flask(__name__, static_url_path=f'/', static_folder='./static')
 
 # set up a new database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{getenv("MYSQL_ROOT_PASSWORD")}@mysql:3306/lbg-db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
@@ -205,8 +205,7 @@ def delete_one(_id):
 
 # module import protection
 if __name__ == '__main__':
-        # get app to serve
-        PORT = (os.getenv('PORT',80))
-        HOST = '0.0.0.0'
-        print(f'API Listening on http://{HOST}:{PORT}')
-        app.run(host=HOST, port=PORT, debug=True)
+    # get app to serve
+    PORT = getenv("PORT", 8080)
+    print(f'API Listening on http://{HOST}:{PORT}')
+    app.run(host=HOST, port=PORT, debug=True)
