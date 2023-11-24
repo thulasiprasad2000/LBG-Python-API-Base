@@ -23,7 +23,7 @@ HOST = '0.0.0.0'
 app = Flask(__name__, static_url_path=f'/', static_folder='./static')
 
 # set up a new database
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{getenv("MYSQL_ROOT_PASSWORD")}@mysql:3306/lbg-db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
